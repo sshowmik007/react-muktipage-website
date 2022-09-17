@@ -1,12 +1,14 @@
 import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
-import Service from "./Service";
+import Services from "./Services";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from './GlobalStyle';
+import { GlobalStyle } from "./GlobalStyle";
+import Error from "./Error";
+import GoToTop from "./components/GoToTop";
 
 const App = () => {
   const theme = {
@@ -32,19 +34,22 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle/>
-    <BrowserRouter>
+      <GlobalStyle />
+      <GoToTop />
+      <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/service" element={<Service />} />
+          <Route path="/service" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Error />} />
         </Routes>
+
         <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
 };
 
-export default App
+export default App;
